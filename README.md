@@ -7,7 +7,7 @@ Allows you to use [Faker](https://github.com/fzaninotto/Faker) to output random 
 Here's an example of some faking:
 
 ```
-{% set faker = craft.faker.factory(['address']) %}
+{% set faker = craft.faker.fake %}
 <ul>
 {% for i in 1..10 %}
     <li>{{ faker.name }}, living at: {{ faker.address }}. Profile picture: {{ faker.imageUrl(640, 450, 'people') }}</li>

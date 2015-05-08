@@ -16,7 +16,7 @@ class FakerService extends BaseApplicationComponent {
         $this->locale = 'en_EN';
 
         // Supported providers out of the box
-        $this->supportedProviders = [
+        $this->supportedProviders = array(
             'person'        => 'Person',
             'address'       => 'Address',
             'phonenumber'   => 'PhoneNumber',
@@ -33,7 +33,7 @@ class FakerService extends BaseApplicationComponent {
             'barcode'       => 'Barcode',
             'miscellaneous' => 'Miscellaneous',
             'biased'        => 'Biased',
-        ];
+        );
     }
 
     /**

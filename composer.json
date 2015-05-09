@@ -1,9 +1,15 @@
 {
-    "name": "sjelfull/craft-faker",
+    "name": "fred/faker",
     "description": "Use Faker from  Craft CMS templates",
-    "authors": [{"name": "Fred Calsen", "email": "fred@sjelfull.no"}],
+    "authors": [
+        {
+            "name": "Fred Carlsen",
+            "email": "fred@sjelfull.no"
+        }
+    ],
     "type": "craft-plugin",
     "require": {
-        "composer/installers": "~1.0"
+        "composer/installers": "~1.0",
+        "fzaninotto/faker": "~1.4"
     }
 }

@@ -10,7 +10,7 @@ class FakerVariable
         return craft()->faker->setLocale($locale);
     }
 
-    public function fake($extraProviders = [])
+    public function fake($extraProviders = array())
     {
         return craft()->faker->factory($extraProviders);
     }

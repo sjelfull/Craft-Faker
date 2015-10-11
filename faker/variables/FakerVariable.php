@@ -7,7 +7,8 @@ class FakerVariable
 
     public function locale($locale)
     {
-        return craft()->faker->setLocale($locale);
+        craft()->faker->setLocale($locale);
+        return $this;
     }
 
     public function fake($extraProviders = array())

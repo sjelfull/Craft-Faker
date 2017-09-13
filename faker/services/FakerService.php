@@ -1,16 +1,25 @@
 <?php
+/**
+ * Faker plugin for Craft CMS
+ *
+ * Faker Service
+ *
+ * @author    Fred Carlsen
+ * @copyright Copyright (c) 2016 Fred Carlsen
+ * @link      http://sjelfull.no
+ * @package   Faker
+ * @since     1.0.0
+ */
 
 namespace Craft;
-require_once(CRAFT_PLUGINS_PATH . 'faker/vendor/autoload.php');
 
-
-class FakerService extends BaseApplicationComponent {
-
+class FakerService extends BaseApplicationComponent
+{
     protected $faker;
     protected $supportedProviders;
     protected $locale;
 
-    public function init()
+    public function init ()
     {
         // Default locale
         $this->locale = 'en_EN';
@@ -38,36 +47,39 @@ class FakerService extends BaseApplicationComponent {
 
     /**
      * Allows you to override the default locale
+     *
      * @param $locale
+     *
      * @return $this
      */
-    public function setLocale($locale)
+    public function setLocale ($locale)
     {
         $this->locale = $locale;
+
         return $this;
     }
 
     /**
      * Returns the Faker faking factory. Let the faking commence!
+     *
      * @param $providers
+     *
      * @return \Faker\Generator
      */
-    public function factory($providers)
+    public function factory ($providers = [])
     {
         $this->faker = \Faker\Factory::create($this->locale);
-
-        foreach ($providers as $provider)
-        {
-            if ( ! array_key_exists(strtolower($provider), $this->supportedProviders)) continue;
-
+        foreach ($providers as $provider) {
+            if ( !array_key_exists(strtolower($provider), $this->supportedProviders) ) continue;
             $class = "\\Faker\\Provider\\" . $this->supportedProviders[ strtolower($provider) ];
-
-            if (class_exists($class))
-            {
+            if ( class_exists($class) ) {
                 $this->faker->addProvider(new $class($this->faker));
             }
         }
 
         return $this->faker;
+
+
     }
+
 }

@@ -6,16 +6,22 @@ class Documentor
 {
     protected $generator;
 
-    public function __construct($generator)
+    /**
+     * @param Generator $generator
+     */
+    public function __construct(Generator $generator)
     {
         $this->generator = $generator;
     }
 
+    /**
+     * @return array
+     */
     public function getFormatters()
     {
         $formatters = array();
         $providers = array_reverse($this->generator->getProviders());
-        $providers[]= new \Faker\Provider\Base($this->generator);
+        $providers[]= new Provider\Base($this->generator);
         foreach ($providers as $provider) {
             $providerClass = get_class($provider);
             $formatters[$providerClass] = array();
@@ -37,7 +43,11 @@ class Documentor
                     $parameters []= $parameter;
                 }
                 $parameters = $parameters ? '('. join(', ', $parameters) . ')' : '';
-                $example = $this->generator->format($methodName);
+                try {
+                    $example = $this->generator->format($methodName);
+                } catch (\InvalidArgumentException $e) {
+                    $example = '';
+                }
                 if (is_array($example)) {
                     $example = "array('". join("', '", $example) . "')";
                 } elseif ($example instanceof \DateTime) {

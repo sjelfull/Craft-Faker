@@ -1,12 +1,18 @@
 {
-    "name": "fred/faker",
-    "require": {
-        "fzaninotto/faker": "~1.4"
-    },
-    "authors": [
-        {
-            "name": "Fred Carlsen",
-            "email": "fred@sjelfull.no"
-        }
-    ]
+	"name": "sjelfull/faker",
+	"description": "Faker your data, baby",
+	"type": "craft-plugin",
+	"authors": [
+		{
+			"name": "Fred Carlsen",
+			"homepage": "http://sjelfull.no"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0",
+		"fzaninotto/faker": "^1.6",
+		"dariuszp/cli-progress-bar": "^1.0",
+		"crewlabs/unsplash": "^2.2",
+		"amphp/amp": "^1.2"
+	}
 }

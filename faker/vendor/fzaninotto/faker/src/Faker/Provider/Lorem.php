@@ -2,7 +2,7 @@
 
 namespace Faker\Provider;
 
-class Lorem extends \Faker\Provider\Base
+class Lorem extends Base
 {
     protected static $wordList = array(
         'alias', 'consequatur', 'aut', 'perferendis', 'sit', 'voluptatem',
@@ -46,6 +46,7 @@ class Lorem extends \Faker\Provider\Base
 
     /**
      * @example 'Lorem'
+     * @return string
      */
     public static function word()
     {
@@ -67,15 +68,15 @@ class Lorem extends \Faker\Provider\Base
             $words []= static::word();
         }
 
-        return $asText ? join(' ', $words) : $words;
+        return $asText ? implode(' ', $words) : $words;
     }
 
     /**
      * Generate a random sentence
      *
-      * @example 'Lorem ipsum dolor sit amet.'
-     * @param  integer $nbWords         around how many words the sentence should contain
-     * @param  boolean $variableNbWords set to false if you want exactly $nbWords returned,
+     * @example 'Lorem ipsum dolor sit amet.'
+     * @param integer $nbWords         around how many words the sentence should contain
+     * @param boolean $variableNbWords set to false if you want exactly $nbWords returned,
      *                                  otherwise $nbWords may vary by +/-40% with a minimum of 1
      * @return string
      */
@@ -91,7 +92,7 @@ class Lorem extends \Faker\Provider\Base
         $words = static::words($nbWords);
         $words[0] = ucwords($words[0]);
 
-        return join($words, ' ') . '.';
+        return implode($words, ' ') . '.';
     }
 
     /**
@@ -109,15 +110,15 @@ class Lorem extends \Faker\Provider\Base
             $sentences []= static::sentence();
         }
 
-        return $asText ? join(' ', $sentences) : $sentences;
+        return $asText ? implode(' ', $sentences) : $sentences;
     }
 
     /**
      * Generate a single paragraph
      *
       * @example 'Sapiente sunt omnis. Ut pariatur ad autem ducimus et. Voluptas rem voluptas sint modi dolorem amet.'
-     * @param  integer $nbSentences         around how many sentences the paragraph should contain
-     * @param  boolean $variableNbSentences set to false if you want exactly $nbSentences returned,
+     * @param integer $nbSentences         around how many sentences the paragraph should contain
+     * @param boolean $variableNbSentences set to false if you want exactly $nbSentences returned,
      *                                      otherwise $nbSentences may vary by +/-40% with a minimum of 1
      * @return string
      */
@@ -130,7 +131,7 @@ class Lorem extends \Faker\Provider\Base
             $nbSentences = self::randomizeNbElements($nbSentences);
         }
 
-        return join(static::sentences($nbSentences), ' ');
+        return implode(static::sentences($nbSentences), ' ');
     }
 
     /**
@@ -148,7 +149,7 @@ class Lorem extends \Faker\Provider\Base
             $paragraphs []= static::paragraph();
         }
 
-        return $asText ? join("\n\n", $paragraphs) : $paragraphs;
+        return $asText ? implode("\n\n", $paragraphs) : $paragraphs;
     }
 
     /**
@@ -204,7 +205,7 @@ class Lorem extends \Faker\Provider\Base
             }
         }
 
-        return join($text, '');
+        return implode($text, '');
     }
 
     protected static function randomizeNbElements($nbElements)
